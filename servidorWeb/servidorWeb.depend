@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1403472925 source:/home/joaopedro/projetos/meiosinterativos/servidorWeb/fila_reentrante.c
+	"fila_reentrante.h"
+
+1403472924 /home/joaopedro/projetos/meiosinterativos/servidorWeb/fila_reentrante.h
+	<semaphore.h>
+
+1403687937 source:/home/joaopedro/projetos/meiosinterativos/servidorWeb/servidor.c
+	<sys/socket.h>
+	<stdlib.h>
+	<stdio.h>
+	<pthread.h>
+	"fila_reentrante.h"
+	<unistd.h>
+	<netdb.h>
+	<string.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<errno.h>
+	<dirent.h>
+

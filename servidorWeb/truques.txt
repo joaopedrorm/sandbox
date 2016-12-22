@@ -1,0 +1,10 @@
+telnet en.wiwkipedia.org 80
+
+GET /wiki/Main_Page http/1.0
+Host: en.wikipedia.org
+
+
+
+redirecionar trafego de porta para outra
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+
