@@ -1,0 +1,58 @@
+<input type="search" id="search" />
+
+<div id="test">this is <a href="#">my</a> text that needs highlighting my text</div>
+
+<script>
+// uses jquery
+
+// mark text
+function highlight () {
+  var term = $("#search").val();
+  
+  if (term !== "") {
+    var src_str = $("#test").html();
+
+    term = term.replace(/(\s+)/,"(<[^>]+>)*$1(<[^>]+>)*");
+    var pattern = new RegExp("("+term+")", "gi");
+
+    src_str = src_str.replace(pattern, "<mark>$1</mark>");
+    src_str = src_str.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/,"$1</mark>$2<mark>$4");
+
+    $("#test").html(src_str);
+  }
+}
+// call funtion on enter
+$("#search").keyup(function(event){
+    if(event.keyCode == 13){
+         highlight();
+    }
+});
+
+</script>
+
+<p id="#body">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet purus tempus, scelerisque mi nec, rhoncus quam. Morbi tincidunt sem sit amet quam gravida, nec accumsan dolor tristique. Ut sit amet tortor rhoncus, mattis odio non, consequat ligula. Aenean in lacinia dolor. Nullam sem risus, dapibus quis adipiscing non, tristique in enim. Vivamus lobortis sollicitudin magna, id vulputate tortor varius vel. Suspendisse hendrerit pellentesque ligula, ut commodo diam feugiat non. In ut odio eu erat malesuada sodales eu ut nisi. Suspendisse rhoncus est mi, ut porttitor magna facilisis id. Aliquam hendrerit elit vel tempus eleifend. Cras neque purus, dignissim ut feugiat ut, aliquam nec ipsum.
+</p>
+<button class="makeHL">Highlight</button>
+
+<script>
+// uses jquery
+
+// word array to highlight
+highlight = ['Lorem', 'amet', 'Morbi'];
+
+// highlight (bold) on click
+$('.makeHL').on('click', function() {
+    // Get the HTML you want to search and replace strings on
+    myHTML = $('#body').html();
+
+    // Use string.replace to add <b></b> to them or another form of highlighting. 
+    // You can use regular expressions here to make it more reliable.
+    $.each(highlight, function(i, str) {
+        myHTML = myHTML.replace(str, '<b>' + str + '</b>');
+    });
+    // Reinsert your new html with the strings highlighted.    
+    $('body').html(myHTML);
+});
+
+</script>
